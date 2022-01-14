@@ -1,0 +1,23 @@
+{
+  "name": "curso-react---udemy",
+  "version": "1.0.0",
+  "description": "React Js do zero ao avançado na pratica",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrolimadeveloper/curso-react-udemy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandrolimadeveloper/curso-react-udemy/issues"
+  },
+  "homepage": "https://github.com/leandrolimadeveloper/curso-react-udemy#readme",
+  "dependencies": {
+    "tar": "^6.1.11"
+  }
+}
