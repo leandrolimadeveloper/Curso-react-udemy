@@ -1,46 +1,45 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
-class Equipe extends Component {
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      nome: 'Leandro',
+      contador: 0
+    }
+    this.aumentar = this.aumentar.bind(this)
+    this.diminuir = this.diminuir.bind(this)
+  }
+
+  aumentar() {
+    let state = this.state
+    state.contador += 1
+    state.nome = 'Roberta'
+    this.setState(state)
+  }
+
+  diminuir() {
+    let state = this.state
+    if(state.contador === 0) {
+      alert('Chegou a zero!')
+    }
+    state.contador -= 1
+    this.setState(state)
+  }
+
   render() {
     return(
       <div>
-        <Sobre nome={this.props.nome} profissao={this.props.profissao}/>
-        <Social />
-        <hr></hr>
+        {this.state.nome}
+        <h1>Contador</h1>
+        <h2>
+          <button onClick={this.diminuir}>-</button>
+            {this.state.contador}
+          <button onClick={this.aumentar}>+</button>
+        </h2>
       </div>
-      
     )
   }
 }
 
-class Sobre extends Component {
-  render() {
-    return(
-      <div>
-        <h2>Olá! Sou o(a) {this.props.nome}</h2>
-        <h3>Profissão: {this.props.profissao}</h3>
-      </div>
-    )
-  }
-}
-
-const Social = (props) => {
-  return (
-    <div>
-      <a>Linkedin</a>
-      <a>Facebook</a>
-    </div>
-  );
-}
-
-function App() {
-  return(
-    <div>
-      <h1>Conheça a nossa equipe:</h1>
-      <Equipe nome="Leandro" profissao="programador"/>
-      <Equipe nome="Larissa" profissao="Arquiteta"/>
-    </div>
-  )
-}
-
-export default App;
+export default App
