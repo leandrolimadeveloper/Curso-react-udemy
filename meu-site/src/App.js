@@ -1,55 +1,28 @@
 import React, {Component} from 'react'
+import Feed from './components/Feed'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: 1,
-      mensagem: true,
-      logado: false 
+      feed: [
+        {id: 1, username: 'Leandro', curtidas: 10, comentarios: 30},
+        {id: 2, username: 'Larissa', curtidas: 50, comentarios: 120},
+        {id: 3, username: 'Roberta', curtidas: 110, comentarios: 230},
+        {id: 4, username: 'José', curtidas: 1, comentarios: 0}
+      ]
     }
-
-    this.sair = this.sair.bind(this)
-    this.entrar = this.entrar.bind(this)
-  }
-
-  sair() {
-    this.setState({logado: false})
-  }
-
-  entrar() {
-    this.setState({logado: true})
   }
   
   render() {
     return(
       <div>
-        {this.state.status === 1 &&
-          <h1>Bem-vindo(a) ao sistema</h1>
-        }
-
-        {this.state.mensagem ? 
-        <div>
-          <h2>Receba seu prêmio</h2>
-        </div> : 
-        <div>
-          <h2>Nenhum prêmio disponível no momento</h2>
-        </div>
-        }
-
-        
-        {this.state.logado ? 
-        <div>
-          <button onClick={this.sair}>Sair do sistema</button>
-        </div> : 
-        <div>
-          <button onClick={this.entrar}>Entrar no sistema</button>
-        </div>
-        }
-        
-        <div>
-          <h2>Curso React JS</h2>
-        </div>
+        {this.state.feed.map((item) => {
+          return(
+            <Feed key={item.id} username={item.username}
+                  curtidas={item.curtidas} comentarios={item.comentarios}/>
+          )
+        })}
       </div>
     )
   }
