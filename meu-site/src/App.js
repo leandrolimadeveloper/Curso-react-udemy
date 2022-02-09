@@ -5,25 +5,45 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      feed: [
-        {id: 1, username: 'Leandro', curtidas: 10, comentarios: 30},
-        {id: 2, username: 'Larissa', curtidas: 50, comentarios: 120},
-        {id: 3, username: 'Roberta', curtidas: 110, comentarios: 230},
-        {id: 4, username: 'José', curtidas: 1, comentarios: 0}
-      ]
+      email: 'teste@teste@gmail',
+      senha: '123',
+      sexo: 'masculino'
     }
+
+    this.trocaEmail = this.trocaEmail.bind(this)
+    this.trocaSexo = this.trocaSexo.bind(this)
+  }
+
+  trocaEmail(e) {
+    this.setState({email: e.target.value})
+  }
+
+  trocaSexo(e) {
+    let valorInformado = e.target.value
+    this.setState({sexo: valorInformado})
   }
   
   render() {
     return(
       <div>
-        {this.state.feed.map((item) => {
-          return(
-            <Feed key={item.id} username={item.username}
-                  curtidas={item.curtidas} comentarios={item.comentarios}/>
-          )
-        })}
+        E-mail:
+        <input type="email" name="email" value={this.state.email} onChange={this.trocaEmail}></input><br></br>
+        Senha:
+        <input type="text" name="senha" value={this.state.senha} onChange={(e) => this.setState({senha: e.target.value})}></input><br></br>
+        Sexo:
+        <select value={this.state.sexo} onChange={this.trocaSexo}>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+        </select>
+      
+        <div>
+          <h3>{this.state.email}</h3>
+          <h3>{this.state.senha}</h3>
+          <h3>{this.state.sexo}</h3>
+        </div>
       </div>
+
+
     )
   }
 }
