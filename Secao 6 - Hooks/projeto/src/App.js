@@ -4,7 +4,7 @@ function App() {
   const [tarefas, setTarefas] = useState([
     'Estudar',
     'Pagar a conta de luz',
-    'Banhar o cachorro  '
+    'Banhar o cachorro'
   ])
 
   const [input, setInput] = useState('')
@@ -19,7 +19,7 @@ function App() {
   }
 
   function addName() {
-    setNome([nome])
+    setNome = nome 
   }
 
   return (
@@ -39,12 +39,8 @@ function App() {
         <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome"></input>
         <button type="text" onClick={addName}>Adicionar nome do usuário</button>
       </div>
-      
-
-      
     </div>
   )
 }
-
 
 export default App
