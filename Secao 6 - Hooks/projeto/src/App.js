@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 function App() {
   const [tarefas, setTarefas] = useState([
@@ -12,6 +12,18 @@ function App() {
   // const [nome, setNome] = useState('Leandro')
   const [nome, setNome] = useState('')
 
+  useEffect(() => {
+    const tarefasStorage = localStorage.getItem('tarefas')
+    
+    if(tarefasStorage) {
+      setTarefas(JSON.parse(tarefasStorage)) // Transformar em array
+    }
+  
+  }, []) // Quando deixa vazio automaticamente é executada a função
+
+  useEffect(() => { 
+    localStorage.setItem('tarefas', JSON.stringify(tarefas)) // Tem que transformar em string, não pode receber em array
+  }, [tarefas])
 
   function handleAdd() {
     setTarefas([...tarefas, input])
