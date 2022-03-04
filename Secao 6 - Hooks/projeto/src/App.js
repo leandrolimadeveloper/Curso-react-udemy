@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 
 function App() {
   const [tarefas, setTarefas] = useState([
@@ -30,6 +30,8 @@ function App() {
     setInput('')
   }
 
+  const totalTarefas = useMemo(() => tarefas.length, [tarefas])
+
   function addName() {
     setNome = nome 
   }
@@ -43,9 +45,9 @@ function App() {
         ))}
       </ul>
       
+      <strong>Você tem {totalTarefas} tarefas</strong><br/><br/>
       <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Tarefa"></input>
       <button type="text" onClick={handleAdd}>Adicionar tarefa</button><br></br>
-
       <div>
         <p key={nome}>Nome: {nome}</p>
         <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome"></input>
