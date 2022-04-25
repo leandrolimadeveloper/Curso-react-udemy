@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/leandrolimadeveloper/curso-react-udemy#readme",
   "dependencies": {
+    "react-router-dom": "^6.3.0",
     "tar": "^6.1.11"
   }
 }
