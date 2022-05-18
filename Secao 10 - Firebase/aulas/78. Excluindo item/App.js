@@ -88,7 +88,6 @@ function App() {
     .then(() => {
       alert('Dado atualizado!')
       console.log('Dado atualizado!')
-      
       // Limpar campo
       setCarroId('')
       setCarro('')
