@@ -4,6 +4,7 @@ import firebase from "./firebaseConnection";
 function App() {
   const [carro, setCarro] = useState('')
   const [montadora, setMontadora] = useState('')
+  const [carros, setCarros] = useState([])
 
   async function handleAdd() {
     await firebase.firestore().collection('carros')
@@ -34,6 +35,27 @@ function App() {
       })
   }
 
+  async function mostraCarro() {
+    await firebase.firestore().collection('carros')
+      .get()
+      .then((snapshot) => {
+        let lista = []
+
+        snapshot.forEach((doc) => {
+          lista.push({
+            id: doc.id,
+            modelo: doc.data().modelo,
+            montadora: doc.data().montadora
+          })
+        })
+
+        setCarros(lista)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <div className="App">
       <h1>Reactjs e Firebase</h1>
@@ -44,8 +66,22 @@ function App() {
       <label>Montadora: </label>
       <input type="text" value={montadora} onChange={(e) => setMontadora(e.target.value)} />
       <br></br><br></br>
+
       <button onClick={handleAdd}>Cadastrar</button>
       <button onClick={buscaCarro}>Buscar carro</button>
+      <button onClick={mostraCarro}>Mostrar carros cadastrados</button>
+
+      <ul>
+        {carros.map((carro) => {
+          return (
+            <li key={carro.id}>
+              <span>Carro: {carro.modelo} </span><br></br>
+              <span>Montadora: {carro.montadora} </span><br></br><br></br>
+            </li>
+          )
+        })}
+      </ul>
+
     </div>
   );
 }
