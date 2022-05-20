@@ -108,7 +108,11 @@ function App() {
   return (
     <div className="App">
       <h1>Reactjs e Firebase</h1>
+      <h2>Cadastrar</h2>
+      
 
+      <hr></hr>
+      <h2>Banco de Dados</h2>
       <label>Pesquisar carro: </label>
       <input type="text" value={carroId} onChange={ (e) => setCarroId(e.target.value)} placeholder="ID" />
 
